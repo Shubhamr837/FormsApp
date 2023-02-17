@@ -38,7 +38,7 @@ public class AddNewEntryRestController {
                 for (int i = 0; i < validators.length(); i++) {
                     ValidatorEnum validator = ValidatorEnum.valueOf(validators.getJSONObject(i).getString("validator"));
                     try {
-                        // Throws exception with message is validation fails
+                        // Throws exception with message if validation fails
                         formUtils.validate(validator, validators.getJSONObject(i), newEntryJSON, key);
                     }
                     catch (ValidationException e){
