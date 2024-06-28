@@ -24,211 +24,120 @@ when sending responses in json,validators,required(true or false),type,etc.
 INTEGER_WITHIN_RANGE it will have min value and max value.
 Here is a Sample form with 5 different fields and 5 different validators :
 
+```
 {
-
-"_id": {
-
-"$oid": "60ed65692eb3284ae73eb93f"
-
-},
-
-"formId": "1",
-
-"userID": "1",
-
-"title": "Sample",
-
-"fields": [
-
-{
-
-"description": "Enter participant's name",
-
-"key": "name",
-
-"question": "Name of the respondent",
-
-"required": true,
-
-
-"responseType": "String",
-
-"validators": [
-
-{
-
-"maxChar": {
-
-"$numberInt": "250"
-
-},
-
-"validator": "STRING_LENGTH_VALIDATOR"
-
-}
-
-]
-
-},
-
-{"choices": [
-
-"Male",
-
-"Female",
-
-"Other"
-
-],
-
-"description": "Select participants gender",
-
-"key": "gender",
-
-"question": "Gender of respondent",
-
-"required": true,
-
-
-"responseType": "Multiple_Choice",
-
-"validators": [
-
-{
-
-"choices": [
-
-"Male",
-
-
-"Female",
-
-"Others"
-
-],
-
-"maxChoices": {
-
-"$numberInt": "1"
-
-},
-
-"minChoices": {
-
-"$numberInt": "1"
-
-},
-
-"validator": "MULTIPLE_CHOICES_VALIDATOR"
-
-}
-
-]
-
-}
-
-,
-
-{
-
-"description": "Enter age in years",
-
-"key": "age",
-
-"question": "Age of the respondent",
-
-"required": true,
-
-"responseType": "Integer",
-
-"validators": [
-
-{
-"max": {
-"$numberInt": "120"
-},
-
-"min": {
-"$numberInt": "0"
-},
-
-"validator": "INTEGER_WITHIN_RANGE"}
-]
-
-},
-
-{
-"key": "location",
-
-"question": "Current Location",
-
-"required": false,
-
-"responseType": "Location",
-
-"validators": [
-{
-"countries": [
-"India",
-"Indonesia"
-],
-
-"validator": "LOCATION_WITHIN_COUNTRY"
-
-}
-
-]
-
-},
-
-{
-
-"key": "email",
-
-"question": "Enter Email of respondent",
-
-"required": true,
-
-"responseType": "Email",
-
-"validators": [
-
-{
-"validator": "EMAIL_VALIDATOR"
-}
-
-]
-
-}
-
-]
-
+    "_id": {
+        "$oid": "60ed65692eb3284ae73eb93f"
+    },
+    "formId": "1",
+    "userID": "1",
+    "title": "Sample",
+    "fields": [
+        {
+            "description": "Enter participant's name",
+            "key": "name",
+            "question": "Name of the respondent",
+            "required": true,
+            "responseType": "String",
+            "validators": [
+                {
+                    "maxChar": {
+                        "$numberInt": "250"
+                    },
+                    "validator": "STRING_LENGTH_VALIDATOR"
+                }
+            ]
+        },
+        {
+            "choices": [
+                "Male",
+                "Female",
+                "Other"
+            ],
+            "description": "Select participants gender",
+            "key": "gender",
+            "question": "Gender of respondent",
+            "required": true,
+            "responseType": "Multiple_Choice",
+            "validators": [
+                {
+                    "choices": [
+                        "Male",
+                        "Female",
+                        "Others"
+                    ],
+                    "maxChoices": {
+                        "$numberInt": "1"
+                    },
+                    "minChoices": {
+                        "$numberInt": "1"
+                    },
+                    "validator": "MULTIPLE_CHOICES_VALIDATOR"
+                }
+            ]
+        },
+        {
+            "description": "Enter age in years",
+            "key": "age",
+            "question": "Age of the respondent",
+            "required": true,
+            "responseType": "Integer",
+            "validators": [
+                {
+                    "max": {
+                        "$numberInt": "120"
+                    },
+                    "min": {
+                        "$numberInt": "0"
+                    },
+                    "validator": "INTEGER_WITHIN_RANGE"
+                }
+            ]
+        },
+        {
+            "key": "location",
+            "question": "Current Location",
+            "required": false,
+            "responseType": "Location",
+            "validators": [
+                {
+                    "countries": [
+                        "India",
+                        "Indonesia"
+                    ],
+                    "validator": "LOCATION_WITHIN_COUNTRY"
+                }
+            ]
+        },
+        {
+            "key": "email",
+            "question": "Enter Email of respondent",
+            "required": true,
+            "responseType": "Email",
+            "validators": [
+                {
+                    "validator": "EMAIL_VALIDATOR"
+                }
+            ]
+        }
+    ]
 }
 
 Example Response for above form
 
 {
-
-"name": "shubham",
-
-"gender": [
-
-"Male"
-
-],
-
-"age": 100,
-
-"location": {
-
-"latitude": 23.610,"longitude": 85.27
-
-},
-
-"email": "shubhamr@gmail.com"
-
+    "name": "shubham",
+    "gender": [
+        "Male"
+    ],
+    "age": 100,
+    "location": {
+        "latitude": 23.610,
+        "longitude": 85.27
+    },
+    "email": "shubhamr@gmail.com"
 }
-
+```
 Keys are specified by the user as a unique identifier of each column. Keys help to find
 the field in form metadata. After finding form metadata we can also get the validators
 and apply those validators to each field.
